@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>e-Certificate Verification</title>
+  <style>
+    body {
+      font-family: Tahoma, Arial, sans-serif;
+      margin: 0;
+      background: #ffffff;
+      color: #000000;
+      font-size: 13px;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    .content { flex: 1; }
+
+    /* Header */
+    .header {
+      background: #ffffff;
+      padding: 6px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 2px solid #3366cc;
+    }
+    .header-left { display: flex; align-items: center; gap: 10px; }
+    .header img { height: 50px; }
+    .header h1 {
+      font-size: 20px; margin: 0; font-weight: bold;
+      color: #003399; font-family: "Times New Roman", Times, serif;
+    }
+    .header-right { font-size: 10px; white-space: nowrap; }
+    .header-right a { color: #003399; margin-left: 10px; text-decoration: none; }
+    .header-right a:hover { text-decoration: underline; }
+
+    /* Navbar */
+    .navbar {
+      background: linear-gradient(to bottom, #5da6f5 0%, #9cccf6 100%);
+      display: flex;
+      padding: 0;
+      border-top: 1px solid #3366cc;
+      border-bottom: 1px solid #082950;
+      width: 100%;
+      position: relative;
+    }
+    .navbar ul {
+      list-style: none;
+      margin: 0; padding: 0;
+      display: flex;
+    }
+    .navbar li {
+      position: relative;
+    }
+    .navbar > ul > li > a {
+      color: black;
+      text-decoration: none;
+      padding: 8px 16px;
+      font-weight: bold;
+      font-size: 12px;
+      display: block;
+      border-right: 1px solid #3366cc;
+    }
+    .navbar > ul > li:last-child > a {
+      border-right: none;
+    }
+    .navbar > ul > li > a:hover {
+      background: #3366cc; color: white;
+    }
+
+    /* Dropdowns */
+    .dropdown {
+      display: none;
+      position: absolute;
+      top: 100%; left: 0;
+      background: linear-gradient(to bottom, #5da6f5 0%, #9cccf6 100%);
+      min-width: 180px;
+      border: 1px solid #3366cc;
+      z-index: 1000;
+    }
+    .dropdown a {
+      display: block;
+      padding: 8px 12px;
+      text-decoration: none;
+      font-size: 12px;
+      font-weight: bold;
+      color: black;
+      border-bottom: 1px solid #3366cc;
+    }
+    .dropdown a:hover {
+      background: #3366cc; color: white;
+    }
+    .navbar li:hover .dropdown { display: block; }
+
+    /* Page Title */
+    .page-title {
+      font-size: 18px;
+      color: #000000;
+      font-weight: bold;
+      border-bottom: 2px solid #003399;
+      padding: 3px 20px;
+      margin: 4px 20px 0 20px;
+    }
+
+    /* Box */
+    .box {
+      border: 2px solid #3366cc;
+      margin: 5px 20px;
+      padding: 0;
+      background: #ffffff;
+      border-radius: 3px;
+      box-shadow: inset 0 0 0 1px #99c2f0;
+    }
+    .box h2 {
+      margin: 0;
+      font-size: 14px;
+      font-weight: bold;
+      background: linear-gradient(to bottom, #5da6f5 0%, #9cccf6 100%);
+      color: #000000;
+      padding: 6px 10px;
+      border-bottom: 2px solid #3a83d1;
+    }
+    .box-content { padding: 12px; }
+
+    /* Form layout */
+    input[type="text"], select {
+      padding: 4px; border: 1px solid #999; font-size: 13px;
+    }
+    small { font-size: 11px; color: #555; }
+
+    button {
+      padding: 4px 14px;
+      background: linear-gradient(to bottom, #5da6f5 0%, #9cccf6 100%);
+      color: black;
+      border: 1px solid #3a83d1;
+      cursor: pointer;
+      font-size: 13px;
+      font-weight: bold;
+      margin-left: 5px;
+    }
+    button:hover { background: #3366cc; color: white; }
+
+    /* Table */
+    table { width: 100%; border-collapse: collapse; font-size: 13px; }
+    table tr { border: 1px solid #3366cc; }
+    table td { padding: 6px 10px; background: #ffffff; }
+    table td:first-child { font-weight: bold; width: 220px; }
+
+    /* Footer */
+    .footer {
+      background: linear-gradient(to bottom, #5da6f5 0%, #9cccf6 100%);
+      text-align: left;
+      padding: 8px 20px;
+      font-size: 12px;
+      color: #0a0a0a;
+      border-top: 1px solid #ccc;
+      width: 100%;
+      margin-top: auto;
+    }
+  </style>
+</head>
+<body>
+  <div class="content">
+    <!-- Header -->
+    <div class="header">
+      <div class="header-left">
+        <img src="C:\Users\ARUN\Downloads\project\logo.jpeg" alt="Government of India Logo">
+        <h1>Ministry of Skill Development And Entrepreneurship</h1>
+      </div>
+      <div class="header-right">
+        <a href="#">+A</a>
+        <a href="#">A</a>
+        <a href="#">-A</a> |
+        <a href="#">Terms & Conditions</a> |
+        <a href="#">Privacy Policy</a><br>
+        <a href="#">Support</a> |
+        <a href="#">Login</a> |
+        <a href="#">FAQ</a> |
+        <a href="#">Help</a> |
+        <a href="#">SiteMap</a>
+      </div>
+    </div>
+
+    <!-- Navbar -->
+    <div class="navbar">
+      <ul>
+        <li><a href="#">Home</a>
+          <div class="dropdown">
+            <a href="#">About</a>
+            <a href="#">News</a>
+            <a href="#">Updates</a>
+          </div>
+        </li>
+        <li><a href="#">ITI</a>
+          <div class="dropdown">
+            <a href="#">ITI Registration</a>
+            <a href="#">ITI Courses</a>
+            <a href="#">ITI Results</a>
+          </div>
+        </li>
+        <li><a href="#">Trainee</a>
+          <div class="dropdown">
+            <a href="#">Trainee Registration</a>
+            <a href="#">Trainee Login</a>
+            <a href="#">Trainee Marks</a>
+          </div>
+        </li>
+        <li><a href="#">Verification</a>
+          <div class="dropdown">
+            <a href="#">e-Certificate Verification</a>
+            <a href="#">Certified Trainee Search</a>
+            <a href="#">Marksheet Verification</a>
+          </div>
+        </li>
+        <li><a href="#">Instructor</a>
+          <div class="dropdown">
+            <a href="#">Instructor Registration</a>
+            <a href="#">Instructor Login</a>
+          </div>
+        </li>
+        <li><a href="#">Examiner</a>
+          <div class="dropdown">
+            <a href="#">Examiner Registration</a>
+            <a href="#">Examiner Activation</a>
+            <a href="#">Examiner Login</a>
+          </div>
+        </li>
+        <li><a href="#">Calendar</a>
+          <div class="dropdown">
+            <a href="#">Academic Calendar</a>
+            <a href="#">Examination Calendar</a>
+          </div>
+        </li>
+        <li><a href="#">CFI</a>
+          <div class="dropdown">
+            <a href="#">CFI Info</a>
+            <a href="#">CFI Support</a>
+          </div>
+        </li>
+        <li><a href="#">Help</a>
+          <div class="dropdown">
+            <a href="#">Helpdesk</a>
+            <a href="#">Grievance</a>
+          </div>
+        </li>
+        <li><a href="#">Dashboard</a>
+          <div class="dropdown">
+            <a href="#">DGT Reporting Dashboard</a>
+            <a href="#">Admitted Trainee Dashboard</a>
+            <a href="#">Instructor Dashboard</a>
+            <a href="#">Annual Result Dashboard</a>
+            <a href="#">Semester Result Dashboard</a>
+          </div>
+        </li>
+        <li><a href="#">Complaint Tool</a>
+          <div class="dropdown">
+            <a href="#">Complaint Tool</a>
+            <a href="#">Helpdesk</a>
+            <a href="#">Grievance</a>
+          </div>
+        </li>
+      </ul>
+    </div>
+
+    <!-- Certificate Verification -->
+    <h1 class="page-title">e-Certificate Verification</h1>
+    <div class="box">
+      <h2>Enter e-Certificate Number</h2>
+      <div class="box-content" style="display: flex; align-items: flex-start; justify-content: space-between; flex-wrap: wrap;">
+        <div>
+          <label for="certnum">e-Certificate Number</label>
+          <input type="text" id="certnum" value="182940000442414">
+          <br><small>(Only Numbers Allowed)</small>
+        </div>
+        <div>
+          <label for="ctype">Certificate Type</label>
+          <select id="ctype">
+            <option>--select--</option>
+            <option>NCVT</option>
+            <option>Apprenticeship</option>
+          </select>
+          <button>Go</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Trainee Info -->
+    <div class="box">
+      <h2>Certified Trainee Information</h2>
+      <div class="box-content">
+        <table>
+          <tr><td>Trainee Name</td><td>ARUNAKUMAR</td></tr>
+          <tr><td>Father Name</td><td>AMARESH</td></tr>
+          <tr><td>Institute</td><td>GR29000792-Govt. ITI, Harohalli</td></tr>
+          <tr><td>Institute Address</td><td>DPK Complex, Kumbara Colony, Harohalli, Kanakapura RAMANAGARA, KARNATAKA 562112</td></tr>
+          <tr><td>Trade</td><td>Electrician</td></tr>
+          <tr><td>Training Duration</td><td>Aug-2022 To Nov-2023</td></tr>
+          <tr><td>Certified</td><td>Yes</td></tr>
+          <tr><td>Certificate Issue Date</td><td>10-Mar-2024</td></tr>
+        </table>
+        <br>
+        <div style="text-align: center;">
+          <button>Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <div class="footer">
+    © 2015 Ministry of Skill Development And Entrepreneurship, Government of India.  
+    <br>Suggested browser Microsoft Edge, Chrome or Safari only.
+    Total Hits : 534,324,314 | Yearly Hits : 12,452,464 | Monthly Hits : 51,683,346
+  </div>
+</body>
+</html>
